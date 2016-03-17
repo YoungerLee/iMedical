@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.young.iMedical.domain.User" table="users">
+		<id name="id" type="string">
+			<column name="id" sql-type="varchar(50)" not-null="true"/>
+			<generator class="uuid"/>
+		</id>
+		<property name="username" type="string">
+			<column name="username" sql-type="varchar(50)"/>
+		</property>
+		<property name="password" type="date">
+			<column name="password" sql-type="varchar(100)"/>
+		</property>
+		<property name="gender" type="int">
+			<column name="gender" sql-type="int"/>
+		</property>
+	</class>
+</hibernate-mapping>
