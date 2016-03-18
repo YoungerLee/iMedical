@@ -9,6 +9,7 @@ public class GenericSuperClass {
 	 * @param clazz
 	 * @return 返回对象
 	 */
+	@SuppressWarnings("rawtypes")
 	public static Class getClass(Class clazz) {
 		ParameterizedType pt = (ParameterizedType) clazz.getGenericSuperclass();
 		Class entity = (Class) pt.getActualTypeArguments()[0];

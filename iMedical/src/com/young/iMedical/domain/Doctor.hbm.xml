@@ -3,13 +3,13 @@
     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
     "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="com.young.iMedical.domain">
-	<class name="User" table="users">
+	<class name="Doctor" table="doctors">
 		<id name="id" type="string">
 			<column name="id" sql-type="varchar(50)" not-null="true"/>
 			<generator class="uuid"/>
 		</id>
-		<property name="username" type="string">
-			<column name="username" sql-type="varchar(50)"/>
+		<property name="name" type="string">
+			<column name="name" sql-type="varchar(50)"/>
 		</property>
 		<property name="password" type="string">
 			<column name="password" sql-type="varchar(100)"/>
@@ -19,6 +19,9 @@
 		</property>
 		<property name="birthday" type="date">
 			<column name="birthday" sql-type="date"/>
+		</property>
+		<property name="hospital" type="string">
+			<column name="hospital" sql-type="varchar(255)"/>
 		</property>
 	</class>
 </hibernate-mapping>

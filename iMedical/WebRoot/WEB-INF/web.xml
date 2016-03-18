@@ -3,12 +3,47 @@
     xmlns="http://java.sun.com/xml/ns/javaee"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+	<!-- 全站参数配置开始 -->
+  	<context-param>
+	  	<description>全站编码配置</description>
+	  	<param-name>encode</param-name>
+	  	<param-value>utf-8</param-value>
+  	</context-param>
+  	<!-- 全站参数配置结束 -->
+  	<filter>
+		<description>全站乱码过滤器</description>
+		<filter-name>encodeFilter</filter-name>
+		<filter-class>com.young.iMedical.filter.EncodeFilter</filter-class>
+		<init-param>
+			<param-name>encode</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodeFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 	<filter>
 	  	<filter-name>struts2</filter-name>
 	  	<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
   	</filter>
   	<filter-mapping>
+	  	<filter-name>struts2</filter-name>
+	  	<url-pattern>/*</url-pattern>
+  	</filter-mapping>
+  	<filter-mapping>
 		<filter-name>struts2</filter-name>
 		<url-pattern>*.action</url-pattern>
 	</filter-mapping>
+	<filter-mapping>  
+    	<filter-name>struts2</filter-name>  
+    	<url-pattern>*.jsp</url-pattern>  
+	</filter-mapping> 
+	<session-config>
+  		<session-timeout>30</session-timeout>
+  	</session-config>
+	<display-name>iMedical</display-name>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
 </web-app>

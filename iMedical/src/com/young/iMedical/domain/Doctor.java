@@ -4,14 +4,15 @@ import java.io.Serializable;
 import java.sql.Date;
 
 @SuppressWarnings("serial")
-public class User implements Serializable {
+public class Doctor implements Serializable {
 	private String id;
-	private String username;
+	private String name;
 	private String password;
-	private int gender; // 1为男，0为女
+	private int gender;
 	private Date birthday;
+	private String hospital;
 
-	public User() {
+	public Doctor() {
 
 	}
 
@@ -23,12 +24,12 @@ public class User implements Serializable {
 		this.id = id;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getName() {
+		return name;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getPassword() {
@@ -53,5 +54,13 @@ public class User implements Serializable {
 
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
+	}
+
+	public String getHospital() {
+		return hospital;
+	}
+
+	public void setHospital(String hospital) {
+		this.hospital = hospital;
 	}
 }
