@@ -77,6 +77,20 @@ public class CommonDaoImpl<T> extends HibernateDaoSupport implements
 
 	/**
 	 * @Name: deleteObjectByIDs
+	 * @Description: 通过id的删除对象
+	 * @Author: 李飞洋
+	 * @Version: V1.00 （版本号）
+	 * @Create Date: 2016-03-17 （创建日期）
+	 * @Parameters: Serializable id 主键ID的数组
+	 * @Return: 无
+	 */
+	@Override
+	public void deleteObjectByID(Serializable id) {
+		this.getHibernateTemplate().delete(id);
+	}
+
+	/**
+	 * @Name: deleteObjectByIDs
 	 * @Description: 通过id的数组删除对象
 	 * @Author: 李飞洋
 	 * @Version: V1.00 （版本号）

@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import com.opensymphony.xwork2.ModelDriven;
 import com.young.iMedical.container.ServiceProvider;
 import com.young.iMedical.domain.User;
+import com.young.iMedical.service.LogService;
 import com.young.iMedical.service.UserService;
 import com.young.iMedical.util.MD5Utils;
 
@@ -15,6 +16,8 @@ public class UserAction extends BaseAction implements ModelDriven<User> {
 
 	private UserService userService = (UserService) ServiceProvider
 			.getService(UserService.SERVICE_NAME);
+	private LogService logService = (LogService) ServiceProvider
+			.getService(LogService.SERVICE_NAME);
 
 	@Override
 	public User getModel() {
@@ -39,6 +42,8 @@ public class UserAction extends BaseAction implements ModelDriven<User> {
 					return "error";
 				} else {
 					request.getSession().setAttribute("user", user);
+					logService.saveUserLog(request,
+							"登录模块：当前用户【" + user.getUsername() + "】登录系统");
 					return "login";
 				}
 			}

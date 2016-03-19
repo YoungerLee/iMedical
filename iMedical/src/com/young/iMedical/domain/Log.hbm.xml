@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.young.iMedical.domain">
+	<class name="Log" table="logs">
+		<id name="id" type="string">
+			<column name="id" sql-type="varchar(50)" not-null="true"/>
+			<generator class="uuid"/>
+		</id>
+		<property name="operName" type="string">
+			<column name="operName" sql-type="varchar(50)"/>
+		</property>
+		<property name="operTime" type="timestamp">
+			<column name="operTime" sql-type="timestamp"/>
+		</property>
+		<property name="details" type="string">
+			<column name="details" sql-type="varchar(255)"/>
+		</property>
+		<property name="ipAddress" type="string">
+			<column name="ipAddress" sql-type="varchar(255)"/>
+		</property>
+	</class>
+</hibernate-mapping>

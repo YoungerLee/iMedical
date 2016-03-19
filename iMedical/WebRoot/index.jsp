@@ -33,7 +33,7 @@
   	<div align="center">
 	 	<h1>iMedical</h1><hr>
 	 	<font color="red">${msg }</font>
-	 	<form action="${pageContext.request.contextPath}/doctor_login.action" method="post">
+	 	<form action="${pageContext.request.contextPath}/user_login.action" method="post">
 	 		<table>
 		 		<tr>
 					<td>用户名:</td>

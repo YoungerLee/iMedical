@@ -12,6 +12,8 @@ public interface CommonDao<T> {
 
 	T findObjectByID(Serializable id);
 
+	void deleteObjectByID(Serializable id);
+
 	void deleteObjectByIDs(Serializable... ids);
 
 	void deleteObjectByCollection(Collection<T> entities);
