@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.young.iMedical.domain">
+	<class name="Medicine" table="medicines">
+		<id name="med_id" type="string">
+			<column name="med_id" sql-type="varchar(50)" not-null="true"/>
+			<generator class="uuid"/>
+		</id>
+		<property name="name" type="string">
+			<column name="name" sql-type="varchar(100)"/>
+		</property>
+		<property name="type" type="string">
+			<column name="type" sql-type="varchar(100)"/>
+		</property>
+		<property name="method" type="string">
+			<column name="method" sql-type="varchar(255)"/>
+		</property>
+		<property name="quantity" type="int">
+			<column name="quantity" sql-type="int"/>
+		</property>
+		<property name="perNum" type="int">
+			<column name="perNum" sql-type="int"/>
+		</property>
+		<property name="buyTime" type="date">
+			<column name="buyTime" sql-type="date"/>
+		</property>
+		<many-to-one name="doctor" class="com.young.iMedical.domain.Doctor">
+			<column name="doctor_id"/>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

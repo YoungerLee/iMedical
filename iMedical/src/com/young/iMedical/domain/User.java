@@ -5,7 +5,7 @@ import java.sql.Date;
 
 @SuppressWarnings("serial")
 public class User implements Serializable {
-	private String id;
+	private String user_id;
 	private String username;
 	private String password;
 	private int gender; // 1为男，0为女
@@ -15,12 +15,12 @@ public class User implements Serializable {
 
 	}
 
-	public String getId() {
-		return id;
+	public String getUser_id() {
+		return user_id;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
 	}
 
 	public String getUsername() {

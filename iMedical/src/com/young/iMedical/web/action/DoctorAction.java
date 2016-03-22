@@ -46,6 +46,18 @@ public class DoctorAction extends BaseAction implements ModelDriven<Doctor> {
 		}
 	}
 
+	public String askMedList() {
+		return "medList";
+	}
+
+	public String askAddMed() {
+		return "addMed";
+	}
+
+	public String home() {
+		return "home";
+	}
+
 	public String logout() {
 		// 清空session
 		request.getSession().invalidate();

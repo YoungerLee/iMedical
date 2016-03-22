@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.young.iMedical.domain">
+	<class name="Prescription" table="prescriptions">
+	<id name="pre_id" type="string">
+			<column name="pre_id" sql-type="varchar(50)" not-null="true"/>
+			<generator class="uuid"/>
+		</id>
+		<property name="purpose" type="string">
+			<column name="purpose" sql-type="varchar(255)"/>
+		</property>
+		<property name="time" type="date">
+			<column name="time" sql-type="date"/>
+		</property>
+		<many-to-one name="doctor" class="com.young.iMedical.domain.Doctor">
+			<column name="doctor_id"/>
+		</many-to-one>
+		<many-to-one name="user" class="com.young.iMedical.domain.User">
+			<column name="user_id"/>
+		</many-to-one>
+		<set name="medicines" inverse="false" cascade="all">
+			<key column="pre_id" />
+			<one-to-many class="com.young.iMedical.domain.PreMedicine"/>
+		</set>
+	</class>
+</hibernate-mapping>

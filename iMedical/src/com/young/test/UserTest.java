@@ -1,11 +1,21 @@
 package com.young.test;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.junit.Test;
 
 import com.young.iMedical.container.ServiceProvider;
+import com.young.iMedical.domain.Doctor;
+import com.young.iMedical.domain.PreMedicine;
+import com.young.iMedical.domain.Prescription;
+import com.young.iMedical.domain.User;
 import com.young.iMedical.service.DoctorService;
 import com.young.iMedical.service.LogService;
+import com.young.iMedical.service.MedicineService;
+import com.young.iMedical.service.PrescriptionService;
 import com.young.iMedical.service.UserService;
+import com.young.iMedical.util.StringUtils;
 
 public class UserTest {
 	private UserService userService = (UserService) ServiceProvider
@@ -15,6 +25,10 @@ public class UserTest {
 
 	private LogService logService = (LogService) ServiceProvider
 			.getService(LogService.SERVICE_NAME);
+	private MedicineService medicineService = (MedicineService) ServiceProvider
+			.getService(MedicineService.SERVICE_NAME);
+	private PrescriptionService prescriptionService = (PrescriptionService) ServiceProvider
+			.getService(PrescriptionService.SERVICE_NAME);
 
 	// @Test
 	// public void addUser() {
@@ -44,11 +58,45 @@ public class UserTest {
 	// .findUserById("4028472a5388c45e015388c461590001");
 	// System.out.println(user.getUsername() + user.getPassword());
 	// }
+	// @Test
+	// public void testLog() {
+	// String[] ids = new String[] { "4028472a53972b6d0153972b74fc0001" };
+	// // logService.deleteLogByLogId("4028472a53972b6d0153972b74fc0001");
+	// logService.deleteLogByLogIDs(ids);
+	// }
+	// @Test
+	// public void testMed() {
+	// String id = "4028472a539715930153971f56a00001";
+	// medicineService.deleteMedById(id);
+	// }
 	@Test
-	public void testLog() {
-		String[] ids = new String[] { "4028472a538f2dc601538f2dcf870001",
-				"4028472a538f2dc601538f2ff4f50002",
-				"4028472a538f2dc601538f3037720003" };
-		logService.deleteLogByLogIDs(ids);
+	public void testPres() {
+		String doc_id = "4028472a5389f3d1015389f3d5000001";
+		String user_id = "2c948a825389aae0015389aae3650001";
+		User user = userService.findUserById(user_id);
+		Doctor doctor = doctorService.findDoctorById(doc_id);
+		PreMedicine pm1 = new PreMedicine();
+		PreMedicine pm2 = new PreMedicine();
+		pm1.setName("999感冒灵");
+		pm1.setMethod("一次一袋，每日3次");
+		pm1.setQuantity(1);
+		pm1.setPerNum(10);
+		pm1.setType("感冒药");
+		pm2.setName("VC银翘片");
+		pm2.setMethod("一次3粒，每日3次");
+		pm2.setQuantity(2);
+		pm2.setPerNum(50);
+		pm2.setType("感冒药");
+		Set<PreMedicine> medicines = new HashSet<>();
+		medicines.add(pm1);
+		medicines.add(pm2);
+		Prescription prescription = new Prescription();
+		prescription.setDoctor(doctor);
+		prescription.setUser(user);
+		prescription.setPurpose("感冒");
+		prescription.setMedicines(medicines);
+		prescription.setTime(new java.sql.Date(StringUtils.stringConvertDate(
+				"2016-05-20").getTime()));
+		prescriptionService.savePres(prescription);
 	}
 }

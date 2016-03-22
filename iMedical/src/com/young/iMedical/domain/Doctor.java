@@ -5,7 +5,7 @@ import java.sql.Date;
 
 @SuppressWarnings("serial")
 public class Doctor implements Serializable {
-	private String id;
+	private String doctor_id;
 	private String name;
 	private String password;
 	private int gender;
@@ -16,12 +16,12 @@ public class Doctor implements Serializable {
 
 	}
 
-	public String getId() {
-		return id;
+	public String getDoctor_id() {
+		return doctor_id;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setDoctor_id(String doctor_id) {
+		this.doctor_id = doctor_id;
 	}
 
 	public String getName() {

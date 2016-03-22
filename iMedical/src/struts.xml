@@ -13,21 +13,41 @@
 	    <!-- 普通用户首页登录 -->
 	    <action name="user_*" class="com.young.iMedical.web.action.UserAction" method="{1}">
 	    	<result name="login">
-	    		/WEB-INF/jsp/home.jsp
+	    		/WEB-INF/jsp/userHome.jsp
 	    	</result>
 	    	<!-- 处理验证登录失败，跳转到index.jsp -->
 	    	<result name="error">
-	    		/index.jsp
+	    		/userLogin.jsp
 	    	</result>
 	    </action>
 	    <!-- 医生用户登录 -->
 	    <action name="doctor_*" class="com.young.iMedical.web.action.DoctorAction" method="{1}">
 	    	<result name="login">
-	    		/WEB-INF/jsp/home.jsp
+	    		/WEB-INF/jsp/docHome.jsp
 	    	</result>
 	    	<!-- 处理验证登录失败，跳转到index.jsp -->
 	    	<result name="error">
-	    		/index.jsp
+	    		/docLogin.jsp
+	    	</result>
+	    	<result name="home">
+	    		/WEB-INF/jsp/docHome.jsp
+	    	</result>
+	    	<result name="medList">
+	    		/WEB-INF/jsp/medList.jsp
+	    	</result>
+	    	<result name="addMed">
+	    		/WEB-INF/jsp/addMed.jsp
+	    	</result>
+	    </action>
+	    <action name="medicine_*" class="com.young.iMedical.web.action.MedicineAction" method="{1}">
+	    	<result name="updateMed">
+	    		/WEB-INF/jsp/updateMed.jsp
+	    	</result>
+	    	<result name="list">
+	    		/WEB-INF/jsp/medList.jsp
+	    	</result>
+	    	<result name="error">
+	    		/WEB-INF/jsp/error.jsp
 	    	</result>
 	    </action>
 	</package>

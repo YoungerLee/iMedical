@@ -66,6 +66,7 @@ public class LogServiceImpl implements LogService {
 	}
 
 	@Override
+	@Transactional(isolation = Isolation.DEFAULT, propagation = Propagation.REQUIRED, readOnly = false)
 	public void deleteLogByLogId(String id) {
 		logDao.deleteObjectByID(id);
 	}

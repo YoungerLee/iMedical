@@ -4,8 +4,8 @@
     "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="com.young.iMedical.domain">
 	<class name="Log" table="logs">
-		<id name="id" type="string">
-			<column name="id" sql-type="varchar(50)" not-null="true"/>
+		<id name="log_id" type="string">
+			<column name="log_id" sql-type="varchar(50)" not-null="true"/>
 			<generator class="uuid"/>
 		</id>
 		<property name="operName" type="string">
