@@ -10,6 +10,7 @@ public class PreMedicine implements Serializable {
 	private String method;
 	private int quantity;
 	private int perNum;
+	private int totalNum;
 	private Prescription prescription;
 
 	public int getPm_id() {
@@ -58,6 +59,14 @@ public class PreMedicine implements Serializable {
 
 	public void setPerNum(int perNum) {
 		this.perNum = perNum;
+	}
+
+	public int getTotalNum() {
+		return totalNum;
+	}
+
+	public void setTotalNum(int totalNum) {
+		this.totalNum = totalNum;
 	}
 
 	public Prescription getPrescription() {

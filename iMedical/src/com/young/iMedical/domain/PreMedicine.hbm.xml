@@ -23,7 +23,10 @@
 		<property name="perNum" type="int">
 			<column name="perNum" sql-type="int"/>
 		</property>
-		<many-to-one name="prescription" class="com.young.iMedical.domain.Prescription">
+		<property name="totalNum" type="int">
+			<column name="totalNum" sql-type="int"/>
+		</property>
+		<many-to-one name="prescription" class="com.young.iMedical.domain.Prescription" lazy="false">
 			<column name="pre_id" />
 		</many-to-one>
 	</class>

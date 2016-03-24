@@ -10,6 +10,11 @@
 	  	<param-value>utf-8</param-value>
   	</context-param>
   	<!-- 全站参数配置结束 -->
+  	 <!-- 监听器配置开始 -->
+	<listener>
+		<listener-class>com.young.iMedical.listener.MyHSessionListener</listener-class>
+	</listener>
+  <!-- 监听器配置结束 -->
   	<filter>
 		<description>全站乱码过滤器</description>
 		<filter-name>encodeFilter</filter-name>

@@ -12,9 +12,10 @@
 			<a href="${pageContext.request.contextPath }/index.jsp">请先登录</a>
 		</s:if>
 		<s:if test="#session.user != null">
-			欢迎回来!<s:property value="#session.user.name"/>!<br>
-			<a href="${pageContext.request.contextPath }/doctor_askAddMed.action">添加药品</a>
-			<a href="${pageContext.request.contextPath }/medicine_medList.action">查看药品</a>
+			欢迎回来!<s:property value="#session.user.username"/>!<br>
+			<a href="${pageContext.request.contextPath }/prescription_presListOfUser.action">查看我的药方</a>
+			<a href="${pageContext.request.contextPath }/jsp/addMed.jsp">服药备忘录</a>
+			<a href="${pageContext.request.contextPath }/user_logout.action">注销</a>
 		</s:if>
 	</div>
   </body>

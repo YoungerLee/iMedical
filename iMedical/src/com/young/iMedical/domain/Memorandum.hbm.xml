@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.young.iMedical.domain">
+	<class name="Memorandum" table="memorandum">
+		<id name="mem_id" type="int">
+			<column name="mem_id" sql-type="int" not-null="true"/>
+			<generator class="increment"/>
+		</id>
+		<property name="content" type="string">
+			<column name="content" sql-type="varchar(255)"/>
+		</property>
+		<property name="beginDate" type="date">
+			<column name="beginDate" sql-type="date"/>
+		</property>
+		<property name="endDate" type="date">
+			<column name="endDate" sql-type="date"/>
+		</property>
+		<property name="time" type="time">
+			<column name="time" sql-type="time"/>
+		</property>
+		<many-to-one name="user" class="com.young.iMedical.domain.User" lazy="false">
+			<column name="user_id" />
+		</many-to-one>
+		<many-to-one name="prescription" class="com.young.iMedical.domain.Prescription" lazy="false">
+			<column name="pre_id" />
+		</many-to-one>
+		<many-to-one name="preMedicine" class="com.young.iMedical.domain.PreMedicine" unique="true" lazy="false">
+			<column name="pm_id" />
+		</many-to-one>
+	</class>
+</hibernate-mapping>

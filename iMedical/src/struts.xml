@@ -12,42 +12,65 @@
 	<package name="young" namespace="/" extends="struts-default">
 	    <!-- 普通用户首页登录 -->
 	    <action name="user_*" class="com.young.iMedical.web.action.UserAction" method="{1}">
-	    	<result name="login">
-	    		/WEB-INF/jsp/userHome.jsp
+	    	<result name="login" type="redirect">
+	    		/jsp/userHome.jsp
 	    	</result>
 	    	<!-- 处理验证登录失败，跳转到index.jsp -->
 	    	<result name="error">
-	    		/userLogin.jsp
+	    		/jsp//userLogin.jsp
+	    	</result>
+	    	<result name="logout" type="redirect">
+	    		/index.jsp
 	    	</result>
 	    </action>
 	    <!-- 医生用户登录 -->
 	    <action name="doctor_*" class="com.young.iMedical.web.action.DoctorAction" method="{1}">
-	    	<result name="login">
-	    		/WEB-INF/jsp/docHome.jsp
+	    	<result name="login" type="redirect">
+	    		/jsp/docHome.jsp
 	    	</result>
 	    	<!-- 处理验证登录失败，跳转到index.jsp -->
 	    	<result name="error">
-	    		/docLogin.jsp
+	    		/jsp/docLogin.jsp
 	    	</result>
-	    	<result name="home">
-	    		/WEB-INF/jsp/docHome.jsp
+	    	<result name="logout" type="redirect">
+	    		/index.jsp
 	    	</result>
-	    	<result name="medList">
-	    		/WEB-INF/jsp/medList.jsp
-	    	</result>
-	    	<result name="addMed">
-	    		/WEB-INF/jsp/addMed.jsp
-	    	</result>
+	    	<!-- 处理验证登录失败，跳转到index.jsp -->
 	    </action>
 	    <action name="medicine_*" class="com.young.iMedical.web.action.MedicineAction" method="{1}">
 	    	<result name="updateMed">
-	    		/WEB-INF/jsp/updateMed.jsp
+	    		/jsp/updateMed.jsp
 	    	</result>
 	    	<result name="list">
-	    		/WEB-INF/jsp/medList.jsp
+	    		/jsp/medList.jsp
 	    	</result>
 	    	<result name="error">
-	    		/WEB-INF/jsp/error.jsp
+	    		/jsp/error.jsp
+	    	</result>
+	    	<result name="addToPres" type="redirect">
+	    		/jsp/addPres.jsp
+	    	</result>
+	    	<result name="change" type="redirect">
+	    		/jsp/addPres.jsp
+	    	</result>
+	    	<result name="clear" type="redirect">
+	    		/jsp/addPres.jsp
+	    	</result>
+	    </action>
+	    <action name="prescription_*" class="com.young.iMedical.web.action.PrescriptionAction" method="{1}">
+	    	<result name="docList">
+	    		/jsp/docPres.jsp
+	    	</result>
+	    	<result name="userList">
+	    		/jsp/userPres.jsp
+	    	</result>
+	    </action>
+	    <action name="memorandum_*" class="com.young.iMedical.web.action.MemorandumAction" method="{1}">
+	    	<result name="askAddMemo">
+	    		/jsp/addMemo.jsp
+	    	</result>
+	    	<result name="memoList">
+	    		/jsp/memoList.jsp
 	    	</result>
 	    </action>
 	</package>

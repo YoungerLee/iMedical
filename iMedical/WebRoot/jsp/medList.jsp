@@ -26,6 +26,7 @@
   			<th>购置日期</th>
   			<th>修改</th>
   			<th>删除</th>
+  			<th>添加至药方</th>
   		</tr>
   		<c:forEach items="${requestScope.medList}" var="med">
 	  		<tr>
@@ -38,11 +39,12 @@
 	  			<td><c:out value="${med.buyTime }"/></td>
 	  			<td><a href="${pageContext.request.contextPath }/medicine_askUpdateMed.action?id=${med.med_id }">修改</a></td>
 	  			<td><a href="${pageContext.request.contextPath }/medicine_delOneMed.action?id=${med.med_id }">删除</a></td>
+	  			<td><a href="${pageContext.request.contextPath }/medicine_addToPres.action?id=${med.med_id }">添加至药方</a></td>
 	  		</tr>
   		</c:forEach>
   	</table>
   	<input type="submit" value="批量删除"/>
-  	<td><a href="${pageContext.request.contextPath }/doctor_home.action">返回主页</a></td>
+  	<a href="${pageContext.request.contextPath }/jsp/docHome.jsp">返回主页</a>
   	</form>
   </body>
 </html>

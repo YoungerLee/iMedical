@@ -1,6 +1,7 @@
 package com.young.iMedical.web.action;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.beanutils.BeanUtils;
 
@@ -133,5 +134,51 @@ public class MedicineAction extends BaseAction implements ModelDriven<Medicine> 
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
+	}
+
+	/**
+	 * 添加药品到药方
+	 * 
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public String addToPres() {
+		String med_id = request.getParameter("id");
+		List<Medicine> list = medicineService.findMedById(med_id);
+		if (!list.isEmpty()) {
+			Medicine medicine = list.get(0);
+			Map<Medicine, Integer> medMap = (Map<Medicine, Integer>) request
+					.getSession().getAttribute("medMap");
+			medMap.put(medicine,
+					medMap.containsKey(medicine) ? medMap.get(medicine) + 1 : 1);
+			return "addToPres";
+		} else {
+			return "error";
+		}
+
+	}
+
+	@SuppressWarnings("unchecked")
+	public String changeNum() {
+		String med_id = request.getParameter("id");
+		List<Medicine> list = medicineService.findMedById(med_id);
+		if (!list.isEmpty()) {
+			Medicine medicine = list.get(0);
+			Map<Medicine, Integer> medMap = (Map<Medicine, Integer>) request
+					.getSession().getAttribute("medMap");
+			medMap.put(medicine,
+					Integer.parseInt(request.getParameter("buynum")));
+			return "change";
+		} else {
+			return "error";
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	public String clearMed() {
+		Map<Medicine, Integer> medMap = (Map<Medicine, Integer>) request
+				.getSession().getAttribute("medMap");
+		medMap.clear();
+		return "clear";
 	}
 }
