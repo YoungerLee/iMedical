@@ -15,7 +15,7 @@ public interface LogService {
 
 	List<Log> findLogListByCondition(Log log);
 
-	void deleteLogByLogId(String id);
+	void deleteLogByLogId(Integer id);
 
-	void deleteLogByLogIDs(String[] ids);
+	void deleteLogByLogIDs(Integer[] ids);
 }

@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 
 @SuppressWarnings("serial")
 public class Log implements Serializable {
-	private String log_id;
+	private int log_id;
 	private String operName;
 	private Timestamp operTime;
 	private String details;
@@ -15,11 +15,11 @@ public class Log implements Serializable {
 
 	}
 
-	public String getLog_id() {
+	public int getLog_id() {
 		return log_id;
 	}
 
-	public void setLog_id(String log_id) {
+	public void setLog_id(int log_id) {
 		this.log_id = log_id;
 	}
 

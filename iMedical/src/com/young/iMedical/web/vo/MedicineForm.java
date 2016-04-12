@@ -1,10 +1,16 @@
-package com.young.iMedical.domain;
+package com.young.iMedical.web.vo;
 
 import java.io.Serializable;
 import java.sql.Date;
 
+/**
+ * VO对象
+ * 
+ * @author Young
+ * 
+ */
 @SuppressWarnings("serial")
-public class Medicine implements Serializable {
+public class MedicineForm implements Serializable {
 	private int med_id;
 	private String name;
 	private String type;
@@ -12,9 +18,9 @@ public class Medicine implements Serializable {
 	private int quantity;
 	private int perNum;
 	private Date buyTime;
-	private Doctor doctor;
+	private String doctor;
 
-	public Medicine() {
+	public MedicineForm() {
 
 	}
 
@@ -74,11 +80,11 @@ public class Medicine implements Serializable {
 		this.buyTime = buyTime;
 	}
 
-	public Doctor getDoctor() {
+	public String getDoctor() {
 		return doctor;
 	}
 
-	public void setDoctor(Doctor doctor) {
+	public void setDoctor(String doctor) {
 		this.doctor = doctor;
 	}
 
@@ -98,7 +104,7 @@ public class Medicine implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Medicine other = (Medicine) obj;
+		MedicineForm other = (MedicineForm) obj;
 		if (med_id != other.med_id)
 			return false;
 		return true;

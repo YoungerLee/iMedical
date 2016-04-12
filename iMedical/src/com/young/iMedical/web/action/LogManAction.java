@@ -6,6 +6,7 @@ import com.opensymphony.xwork2.ModelDriven;
 import com.young.iMedical.container.ServiceProvider;
 import com.young.iMedical.domain.Log;
 import com.young.iMedical.service.LogService;
+import com.young.iMedical.util.StringUtils;
 
 public class LogManAction extends BaseAction implements ModelDriven<Log> {
 
@@ -44,8 +45,10 @@ public class LogManAction extends BaseAction implements ModelDriven<Log> {
 	 * @Return: String delete 重定向到logIndex.jsp
 	 */
 	public String delete() {
-		String logid[] = request.getParameterValues("logID");
-		logService.deleteLogByLogIDs(logid);
+		logService
+				.deleteLogByLogIDs(StringUtils
+						.stringArrayToIntegerArray(request
+								.getParameterValues("logID")));
 		return "delete";
 	}
 }

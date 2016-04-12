@@ -24,6 +24,7 @@ public class UserAction extends BaseAction implements ModelDriven<User> {
 		return user;
 	}
 
+	/********************* 网页端的action **************************/
 	public String login() {
 		try {
 			PrintWriter out = response.getWriter();
@@ -57,5 +58,52 @@ public class UserAction extends BaseAction implements ModelDriven<User> {
 		// 清空session
 		request.getSession().invalidate();
 		return "logout";
+	}
+
+	/***************************** Android端的action *****************************/
+	public void android_user_login() {
+		try {
+			PrintWriter out = response.getWriter();
+			String username = request.getParameter("username");
+			String password = request.getParameter("password");
+			String md5Psw = MD5Utils.md5(password);
+			// 使用登录名查询数据库，获取用户的详细信息
+			User user = userService.findUserByName(username);
+			if (user == null) {
+				out.write("用户名不存在！");
+
+			} else {
+				if (password == null || password.equals("")
+						|| !user.getPassword().equals(md5Psw)) {
+					out.write("密码错误！");
+
+				} else {
+					request.getSession().setAttribute("user", user);
+					logService.saveUserLog(request,
+							"登录模块：当前用户【" + user.getUsername() + "】登录系统");
+					out.write("登录成功");
+				}
+				out.flush();
+				out.close();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
+
+	public void android_user_logout() {
+		try {
+			PrintWriter out = response.getWriter();
+			// 清空session
+			request.getSession().invalidate();
+			out.write("注销成功");
+			out.flush();
+			out.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
 	}
 }

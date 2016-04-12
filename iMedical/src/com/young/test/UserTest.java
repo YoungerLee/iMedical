@@ -1,14 +1,20 @@
 package com.young.test;
 
+import java.util.List;
+
 import org.junit.Test;
 
+import com.google.gson.Gson;
 import com.young.iMedical.container.ServiceProvider;
+import com.young.iMedical.domain.Memorandum;
+import com.young.iMedical.domain.User;
 import com.young.iMedical.service.DoctorService;
 import com.young.iMedical.service.LogService;
 import com.young.iMedical.service.MedicineService;
+import com.young.iMedical.service.MemorandumService;
 import com.young.iMedical.service.PrescriptionService;
 import com.young.iMedical.service.UserService;
-import com.young.iMedical.util.StringUtils;
+import com.young.iMedical.web.vo.MemorandumForm;
 
 public class UserTest {
 	private UserService userService = (UserService) ServiceProvider
@@ -22,6 +28,8 @@ public class UserTest {
 			.getService(MedicineService.SERVICE_NAME);
 	private PrescriptionService prescriptionService = (PrescriptionService) ServiceProvider
 			.getService(PrescriptionService.SERVICE_NAME);
+	private MemorandumService memorandumService = (MemorandumService) ServiceProvider
+			.getService(MemorandumService.SERVICE_NAME);
 
 	// @Test
 	// public void addUser() {
@@ -100,10 +108,30 @@ public class UserTest {
 	// Date date = StringUtils.stringConvertDate("2016-03-24");
 	// System.out.println(StringUtils.addDate(date, 40).toString());
 	// }
+	// @Test
+	// public void testTime() {
+	// String time = "12:12:12";
+	// System.out.println(time);
+	// System.out.println(StringUtils.stringToSqlTime(time));
+	// }
+	// @Test
+	// public void testString() {
+	// String[] str = { "1", "2", "3", "4" };
+	// for (int i = 0; i < str.length; i++) {
+	// System.out.println(str[i] + "\t");
+	// }
+	// Integer[] intArr = StringUtils.stringArrayToIntegerArray(str);
+	// for (int i = 0; i < intArr.length; i++) {
+	// System.out.println(intArr[i] + "\t");
+	// }
+	// }
 	@Test
-	public void testTime() {
-		String time = "12:12:12";
-		System.out.println(time);
-		System.out.println(StringUtils.stringToSqlTime(time));
+	public void android_memo_list() {
+		User user = userService.findUserByName("陈仁煌");
+		List<Memorandum> memoList = memorandumService.findMemoByUser(user);
+		List<MemorandumForm> voList = memorandumService.POconvertVO(memoList);
+		Gson gson = new Gson();
+		String str = gson.toJson(voList);
+		System.out.println(str);
 	}
 }

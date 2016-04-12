@@ -1,15 +1,19 @@
 package com.young.iMedical.web.action;
 
+import java.io.PrintWriter;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.beanutils.BeanUtils;
 
+import com.google.gson.Gson;
 import com.opensymphony.xwork2.ModelDriven;
 import com.young.iMedical.container.ServiceProvider;
 import com.young.iMedical.domain.Doctor;
 import com.young.iMedical.domain.Medicine;
 import com.young.iMedical.service.MedicineService;
+import com.young.iMedical.util.StringUtils;
+import com.young.iMedical.web.vo.MedicineForm;
 
 @SuppressWarnings("serial")
 public class MedicineAction extends BaseAction implements ModelDriven<Medicine> {
@@ -23,6 +27,7 @@ public class MedicineAction extends BaseAction implements ModelDriven<Medicine> 
 		return medicine;
 	}
 
+	/*********************** 网页端的action ********************************/
 	/**
 	 * @Name: addMed
 	 * @Description: 添加药品
@@ -40,7 +45,7 @@ public class MedicineAction extends BaseAction implements ModelDriven<Medicine> 
 			medicine.setDoctor(doctor);
 			if (!medicineService.isMedNameExist(medicine.getName())) {
 				medicineService.saveMed(medicine);
-				return medList();
+				return "addMed";
 			} else {
 				return "error";
 			}
@@ -61,10 +66,11 @@ public class MedicineAction extends BaseAction implements ModelDriven<Medicine> 
 	 */
 	public String delOneMed() {
 		String id = request.getParameter("id");
-		if (medicineService.isMedIdExist(id)) {
+		if (medicineService.isMedIdExist(Integer.parseInt(id))) {
 			String[] ids = { id };
-			medicineService.deleteMedByIds(ids);
-			return medList();
+			medicineService.deleteMedByIds(StringUtils
+					.stringArrayToIntegerArray(ids));
+			return "delOneMed";
 		} else {
 			return "error";
 		}
@@ -81,8 +87,9 @@ public class MedicineAction extends BaseAction implements ModelDriven<Medicine> 
 	 */
 	public String delBatchMed() {
 		String[] ids = request.getParameterValues("delId");
-		medicineService.deleteMedByIds(ids);
-		return medList();
+		medicineService.deleteMedByIds(StringUtils
+				.stringArrayToIntegerArray(ids));
+		return "delBatchMed";
 	}
 
 	/**
@@ -103,11 +110,12 @@ public class MedicineAction extends BaseAction implements ModelDriven<Medicine> 
 
 	public String askUpdateMed() {
 		String med_id = request.getParameter("id");
-		List<Medicine> list = medicineService.findMedById(med_id);
+		List<Medicine> list = medicineService.findMedById(Integer
+				.parseInt(med_id));
 		if (!list.isEmpty()) {
 			Medicine med = list.get(0);
 			request.getSession().setAttribute("med", med);
-			return "updateMed";
+			return "askUpdateMed";
 		} else {
 			return "error";
 		}
@@ -129,7 +137,7 @@ public class MedicineAction extends BaseAction implements ModelDriven<Medicine> 
 			BeanUtils.populate(medicine, request.getParameterMap());
 			medicine.setDoctor(doctor);
 			medicineService.updateMed(medicine);
-			return medList();
+			return "updateMed";
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
@@ -144,7 +152,8 @@ public class MedicineAction extends BaseAction implements ModelDriven<Medicine> 
 	@SuppressWarnings("unchecked")
 	public String addToPres() {
 		String med_id = request.getParameter("id");
-		List<Medicine> list = medicineService.findMedById(med_id);
+		List<Medicine> list = medicineService.findMedById(Integer
+				.parseInt(med_id));
 		if (!list.isEmpty()) {
 			Medicine medicine = list.get(0);
 			Map<Medicine, Integer> medMap = (Map<Medicine, Integer>) request
@@ -161,7 +170,8 @@ public class MedicineAction extends BaseAction implements ModelDriven<Medicine> 
 	@SuppressWarnings("unchecked")
 	public String changeNum() {
 		String med_id = request.getParameter("id");
-		List<Medicine> list = medicineService.findMedById(med_id);
+		List<Medicine> list = medicineService.findMedById(Integer
+				.parseInt(med_id));
 		if (!list.isEmpty()) {
 			Medicine medicine = list.get(0);
 			Map<Medicine, Integer> medMap = (Map<Medicine, Integer>) request
@@ -180,5 +190,23 @@ public class MedicineAction extends BaseAction implements ModelDriven<Medicine> 
 				.getSession().getAttribute("medMap");
 		medMap.clear();
 		return "clear";
+	}
+
+	/*********************** Android端的action ***********************/
+	public void android_medicine_list() {
+		try {
+			PrintWriter out = response.getWriter();
+			Doctor doctor = (Doctor) request.getSession().getAttribute("user");
+			List<Medicine> list = medicineService.findMedByDoc(doctor);
+			List<MedicineForm> voList = medicineService.POconvertVO(list);
+			Gson gson = new Gson();
+			String str = gson.toJson(voList);
+			out.write(str);
+			out.flush();
+			out.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
 	}
 }

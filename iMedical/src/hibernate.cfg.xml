@@ -19,5 +19,6 @@
 		<mapping resource="com/young/iMedical/domain/Prescription.hbm.xml"/>
 		<mapping resource="com/young/iMedical/domain/PreMedicine.hbm.xml"/>
 		<mapping resource="com/young/iMedical/domain/Memorandum.hbm.xml"/>
+		<mapping resource="com/young/iMedical/domain/HistoryLog.hbm.xml"/>
 	</session-factory>
 </hibernate-configuration>

@@ -5,6 +5,7 @@ import java.util.List;
 import com.young.iMedical.domain.Memorandum;
 import com.young.iMedical.domain.Prescription;
 import com.young.iMedical.domain.User;
+import com.young.iMedical.web.vo.MemorandumForm;
 
 public interface MemorandumService {
 	public final static String SERVICE_NAME = "com.young.iMedical.service.impl.MemorandumServiceImpl";
@@ -38,12 +39,28 @@ public interface MemorandumService {
 	 * @param mem_id
 	 * @return
 	 */
-	List<Memorandum> fineMemoById(int mem_id);
+	List<Memorandum> fineMemoById(Integer mem_id);
 
 	/**
 	 * 删除记录
 	 * 
 	 * @param ids
 	 */
-	void deleteMemoByIds(String[] ids);
+	void deleteMemoByIds(Integer[] ids);
+
+	/**
+	 * 判断是否存在
+	 * 
+	 * @param mem_id
+	 * @return
+	 */
+	boolean isMemoIdExist(Integer mem_id);
+
+	/**
+	 * 把PO对象转化为VO对象
+	 * 
+	 * @param list
+	 * @return VO对象的集合
+	 */
+	List<MemorandumForm> POconvertVO(List<Memorandum> list);
 }

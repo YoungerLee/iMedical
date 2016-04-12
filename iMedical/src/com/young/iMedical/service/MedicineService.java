@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.young.iMedical.domain.Doctor;
 import com.young.iMedical.domain.Medicine;
+import com.young.iMedical.web.vo.MedicineForm;
 
 public interface MedicineService {
 	public final static String SERVICE_NAME = "com.young.iMedical.service.impl.MedicineServiceImpl";
@@ -29,21 +30,21 @@ public interface MedicineService {
 	 * @param id
 	 * @return
 	 */
-	List<Medicine> findMedById(String id);
+	List<Medicine> findMedById(Integer id);
 
 	/**
 	 * 删除单条记录
 	 * 
 	 * @param id
 	 */
-	void deleteMedById(String id);
+	void deleteMedById(Integer id);
 
 	/**
 	 * 删除多条记录
 	 * 
 	 * @param ids
 	 */
-	void deleteMedByIds(String[] ids);
+	void deleteMedByIds(Integer[] ids);
 
 	/**
 	 * 查看药名是否存在
@@ -59,7 +60,7 @@ public interface MedicineService {
 	 * @param id
 	 * @return
 	 */
-	boolean isMedIdExist(String id);
+	boolean isMedIdExist(Integer id);
 
 	/**
 	 * 修改药物
@@ -67,4 +68,19 @@ public interface MedicineService {
 	 * @param medicine
 	 */
 	void updateMed(Medicine medicine);
+
+	/**
+	 * 查询所有药物
+	 * 
+	 * @return 集合
+	 */
+	List<Medicine> getAllMed();
+
+	/**
+	 * 把PO对象转化成VO对象
+	 * 
+	 * @param list
+	 * @return
+	 */
+	List<MedicineForm> POconvertVO(List<Medicine> list);
 }

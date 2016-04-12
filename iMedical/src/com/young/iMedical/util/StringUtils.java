@@ -65,4 +65,12 @@ public class StringUtils {
 		}
 		return plusDate;
 	}
+
+	public static Integer[] stringArrayToIntegerArray(String[] strArray) {
+		Integer[] intArray = new Integer[strArray.length];
+		for (int i = 0; i < strArray.length; i++) {
+			intArray[i] = Integer.parseInt(strArray[i]);
+		}
+		return intArray;
+	}
 }

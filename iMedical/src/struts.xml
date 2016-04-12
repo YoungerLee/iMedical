@@ -9,7 +9,7 @@
 	<constant name="struts.devMode" value="true"></constant>
 	<!-- 配置struts的简单模式 -->
 	<constant name="struts.ui.theme" value="simple"></constant>
-	<package name="young" namespace="/" extends="struts-default">
+	<package name="young" namespace="/" extends="struts-default" >
 	    <!-- 普通用户首页登录 -->
 	    <action name="user_*" class="com.young.iMedical.web.action.UserAction" method="{1}">
 	    	<result name="login" type="redirect">
@@ -29,7 +29,7 @@
 	    		/jsp/docHome.jsp
 	    	</result>
 	    	<!-- 处理验证登录失败，跳转到index.jsp -->
-	    	<result name="error">
+	    	<result name="error" type="redirect">
 	    		/jsp/docLogin.jsp
 	    	</result>
 	    	<result name="logout" type="redirect">
@@ -38,7 +38,7 @@
 	    	<!-- 处理验证登录失败，跳转到index.jsp -->
 	    </action>
 	    <action name="medicine_*" class="com.young.iMedical.web.action.MedicineAction" method="{1}">
-	    	<result name="updateMed">
+	    	<result name="askUpdateMed">
 	    		/jsp/updateMed.jsp
 	    	</result>
 	    	<result name="list">
@@ -55,6 +55,18 @@
 	    	</result>
 	    	<result name="clear" type="redirect">
 	    		/jsp/addPres.jsp
+	    	</result>
+	    	<result name="addMed" type="redirectAction">
+	    		<param name="actionName">medicine_medList.action</param>
+	    	</result>
+	    	<result name="updateMed" type="redirectAction">
+	    		<param name="actionName">medicine_medList.action</param>
+	    	</result>
+	    	<result name="delOneMed" type="redirectAction">
+	    		<param name="actionName">medicine_medList.action</param>
+	    	</result>
+	    	<result name="delBatchMed" type="redirectAction">
+	    		<param name="actionName">medicine_medList.action</param>
 	    	</result>
 	    </action>
 	    <action name="prescription_*" class="com.young.iMedical.web.action.PrescriptionAction" method="{1}">
@@ -73,5 +85,12 @@
 	    		/jsp/memoList.jsp
 	    	</result>
 	    </action>
+	     <action name="historylog_*" class="com.young.iMedical.web.action.HistoryLogAction" method="{1}">
+	    	<result name="logList">
+	    		/jsp/historyLog.jsp
+	    	</result>
+	    </action>	      	    
 	</package>
+	<!-- 以下是处理Android端的action -->
+     <!-- 处理Android端的action -->  
 </struts>

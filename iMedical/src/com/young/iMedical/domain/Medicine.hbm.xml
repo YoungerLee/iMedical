@@ -4,9 +4,9 @@
     "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="com.young.iMedical.domain">
 	<class name="Medicine" table="medicines">
-		<id name="med_id" type="string">
-			<column name="med_id" sql-type="varchar(50)" not-null="true"/>
-			<generator class="uuid"/>
+		<id name="med_id" type="int">
+			<column name="med_id" sql-type="int" not-null="true"/>
+			<generator class="increment"/>
 		</id>
 		<property name="name" type="string">
 			<column name="name" sql-type="varchar(100)"/>
@@ -26,7 +26,7 @@
 		<property name="buyTime" type="date">
 			<column name="buyTime" sql-type="date"/>
 		</property>
-		<many-to-one name="doctor" class="com.young.iMedical.domain.Doctor">
+		<many-to-one name="doctor" class="com.young.iMedical.domain.Doctor" lazy="false">
 			<column name="doctor_id"/>
 		</many-to-one>
 	</class>

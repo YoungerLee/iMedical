@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.young.iMedical.domain">
+	<class name="HistoryLog" table="historylog">
+		<id name="log_id" type="int">
+			<column name="log_id" sql-type="int" not-null="true"/>
+			<generator class="increment"/>
+		</id>
+		<property name="username" type="string">
+			<column name="username" sql-type="varchar(50)"/>
+		</property>
+		<property name="content" type="string">
+			<column name="content" sql-type="varchar(255)"/>
+		</property>
+		<property name="date" type="date">
+			<column name="date" sql-type="date"/>
+		</property>
+		<property name="setTime" type="time">
+			<column name="setTime" sql-type="time"/>
+		</property>
+		<property name="actualTime" type="time">
+			<column name="actualTime" sql-type="time"/>
+		</property>
+		<property name="state" type="int">
+			<column name="state" sql-type="int"/>
+		</property>
+	</class>
+</hibernate-mapping>

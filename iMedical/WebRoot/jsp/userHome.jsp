@@ -14,7 +14,7 @@
 		<s:if test="#session.user != null">
 			欢迎回来!<s:property value="#session.user.username"/>!<br>
 			<a href="${pageContext.request.contextPath }/prescription_presListOfUser.action">查看我的药方</a>
-			<a href="${pageContext.request.contextPath }/jsp/addMed.jsp">服药备忘录</a>
+			<a href="${pageContext.request.contextPath }/memorandum_memoList.action">服药备忘录</a>
 			<a href="${pageContext.request.contextPath }/user_logout.action">注销</a>
 		</s:if>
 	</div>

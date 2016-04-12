@@ -37,6 +37,7 @@ public class LogServiceImpl implements LogService {
 	}
 
 	@Override
+	@Transactional(isolation = Isolation.DEFAULT, propagation = Propagation.REQUIRED, readOnly = false)
 	public void saveDoctorLog(HttpServletRequest request, String details) {
 		Log log = new Log();
 		log.setIpAddress(request.getRemoteAddr());// IP地址
@@ -67,13 +68,13 @@ public class LogServiceImpl implements LogService {
 
 	@Override
 	@Transactional(isolation = Isolation.DEFAULT, propagation = Propagation.REQUIRED, readOnly = false)
-	public void deleteLogByLogId(String id) {
+	public void deleteLogByLogId(Integer id) {
 		logDao.deleteObjectByID(id);
 	}
 
 	@Override
 	@Transactional(isolation = Isolation.DEFAULT, propagation = Propagation.REQUIRED, readOnly = false)
-	public void deleteLogByLogIDs(String[] ids) {
+	public void deleteLogByLogIDs(Integer[] ids) {
 		logDao.deleteObjectByIDs(ids);
 	}
 }
