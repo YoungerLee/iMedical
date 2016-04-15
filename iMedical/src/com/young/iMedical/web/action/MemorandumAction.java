@@ -1,9 +1,11 @@
 package com.young.iMedical.web.action;
 
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.google.gson.Gson;
 import com.opensymphony.xwork2.ModelDriven;
 import com.young.iMedical.container.ServiceProvider;
 import com.young.iMedical.domain.Memorandum;
@@ -13,7 +15,9 @@ import com.young.iMedical.domain.User;
 import com.young.iMedical.service.MemorandumService;
 import com.young.iMedical.service.PreMedicineService;
 import com.young.iMedical.service.PrescriptionService;
+import com.young.iMedical.service.UserService;
 import com.young.iMedical.util.StringUtils;
+import com.young.iMedical.web.vo.MemorandumForm;
 
 public class MemorandumAction extends BaseAction implements
 		ModelDriven<Memorandum> {
@@ -28,6 +32,8 @@ public class MemorandumAction extends BaseAction implements
 			.getService(PrescriptionService.SERVICE_NAME);
 	private PreMedicineService preMedicineService = (PreMedicineService) ServiceProvider
 			.getService(PreMedicineService.SERVICE_NAME);
+	private UserService userService = (UserService) ServiceProvider
+			.getService(UserService.SERVICE_NAME);
 	private static Map<String, Integer> medFreq = new HashMap<String, Integer>();
 	private static Map<String, Integer> freqNum = new HashMap<String, Integer>();
 	static {
@@ -172,7 +178,21 @@ public class MemorandumAction extends BaseAction implements
 
 	/************************** Android端的action *************************/
 	public void android_memo_list() {
-		User user = (User) request.getSession().getAttribute("user");
-		List<Memorandum> memoList = memorandumService.findMemoByUser(user);
+		try {
+			PrintWriter out = response.getWriter();
+			String username = request.getParameter("username");
+			User user = userService.findUserByName(username);
+			List<Memorandum> memoList = memorandumService.findMemoByUser(user);
+			List<MemorandumForm> voList = memorandumService
+					.POconvertVO(memoList);
+			Gson gson = new Gson();
+			String str = gson.toJson(voList);
+			out.write(str);
+			out.flush();
+			out.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
 	}
 }

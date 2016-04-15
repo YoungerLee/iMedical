@@ -76,6 +76,9 @@
 	    	<result name="userList">
 	    		/jsp/userPres.jsp
 	    	</result>
+	    	<result name="addPres" type="redirectAction">
+	    		<param name="actionName">prescription_presListOfDoctor.action</param>
+	    	</result>
 	    </action>
 	    <action name="memorandum_*" class="com.young.iMedical.web.action.MemorandumAction" method="{1}">
 	    	<result name="askAddMemo">
@@ -89,8 +92,30 @@
 	    	<result name="logList">
 	    		/jsp/historyLog.jsp
 	    	</result>
-	    </action>	      	    
+	    </action>
+	    <action name="medGrade_*" class="com.young.iMedical.web.action.MedGradeAction" method="{1}">
+	    	<result name="askGrade">
+	    		/jsp/medGrade.jsp
+	    	</result>
+	    	<result name="addGrade" type="redirect"> 
+	    		/jsp/userHome.jsp
+	    	</result>
+	    </action>      	    
 	</package>
 	<!-- 以下是处理Android端的action -->
      <!-- 处理Android端的action -->  
+    <package name="young_android"  namespace="/" extends="json-default"> 
+	    <action name="android_user_login" class="com.young.iMedical.web.action.UserAction" method="android_user_login">
+              <result type="json" />  <!--返回值类型设置为json,不设置返回页面-->        
+        </action>
+        <action name="android_user_logout" class="com.young.iMedical.web.action.UserAction" method="android_user_logout">
+              <result type="json"></result>  <!--返回值类型设置为json,不设置返回页面-->        
+        </action>
+          <action name="android_doctor_login" class="com.young.iMedical.web.action.DoctorAction" method="android_doctor_login">
+              <result type="json"></result>  <!--返回值类型设置为json,不设置返回页面-->        
+        </action>
+        <action name="android_doctor_logout" class="com.young.iMedical.web.action.DoctorAction" method="android_doctor_logout">
+              <result type="json"></result>  <!--返回值类型设置为json,不设置返回页面-->        
+        </action>
+     </package>
 </struts>

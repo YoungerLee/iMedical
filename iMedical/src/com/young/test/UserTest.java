@@ -12,6 +12,7 @@ import com.young.iMedical.service.DoctorService;
 import com.young.iMedical.service.LogService;
 import com.young.iMedical.service.MedicineService;
 import com.young.iMedical.service.MemorandumService;
+import com.young.iMedical.service.PreMedicineService;
 import com.young.iMedical.service.PrescriptionService;
 import com.young.iMedical.service.UserService;
 import com.young.iMedical.web.vo.MemorandumForm;
@@ -30,6 +31,8 @@ public class UserTest {
 			.getService(PrescriptionService.SERVICE_NAME);
 	private MemorandumService memorandumService = (MemorandumService) ServiceProvider
 			.getService(MemorandumService.SERVICE_NAME);
+	private PreMedicineService pms = (PreMedicineService) ServiceProvider
+			.getService(PreMedicineService.SERVICE_NAME);
 
 	// @Test
 	// public void addUser() {
@@ -134,4 +137,30 @@ public class UserTest {
 		String str = gson.toJson(voList);
 		System.out.println(str);
 	}
+	// @Test
+	// public void android_userPres_list() {
+	// User user = userService.findUserByName("陈仁煌");
+	// List<Prescription> presList = prescriptionService.findPresByUser(user);
+	// List<PrescriptionForm> voList = POconvertVO(presList);
+	// Gson gson = new Gson();
+	// String str = gson.toJson(voList);
+	// System.out.println(str);
+	// }
+	//
+	// private List<PrescriptionForm> POconvertVO(List<Prescription> list) {
+	// List<PrescriptionForm> voList = new ArrayList<PrescriptionForm>();
+	// PrescriptionForm pf = null;
+	// for (int i = 0; list != null && i < list.size(); i++) {
+	// Prescription prescription = list.get(i);
+	// pf = new PrescriptionForm();
+	// pf.setUsername(prescription.getUser().getUsername());
+	// pf.setPre_id(prescription.getPre_id());
+	// pf.setPurpose(prescription.getPurpose());
+	// pf.setDoctorName(prescription.getDoctor().getName());
+	// pf.setTime(prescription.getTime());
+	// pf.setMedicines(pms.POconvertVO(prescription.getMedicines()));
+	// voList.add(pf);
+	// }
+	// return voList;
+	// }
 }

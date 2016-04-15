@@ -26,6 +26,9 @@
 		<property name="totalNum" type="int">
 			<column name="totalNum" sql-type="int"/>
 		</property>
+		<property name="med_id" type="int">
+			<column name="med_id" sql-type="int"/>
+		</property>
 		<many-to-one name="prescription" class="com.young.iMedical.domain.Prescription" lazy="false">
 			<column name="pre_id" />
 		</many-to-one>

@@ -33,7 +33,7 @@
   			</tr>
   			<tr>
   				<td>药物种类</td>
-  				<td><input type="type" name="type" <s:property value="#parameters.type"/>  /></td>
+  				<td><input type="text" name="type" <s:property value="#parameters.type"/>  /></td>
   			</tr>
   			<tr>
   				<td>使用方法</td>

@@ -1,9 +1,9 @@
-package com.young.iMedical.domain;
+package com.young.iMedical.web.vo;
 
 import java.io.Serializable;
 
 @SuppressWarnings("serial")
-public class PreMedicine implements Serializable {
+public class PreMedicineForm implements Serializable {
 	private int pm_id;
 	private String name;
 	private String type;
@@ -11,8 +11,9 @@ public class PreMedicine implements Serializable {
 	private int quantity;
 	private int perNum;
 	private int totalNum;
-	private int med_id;
-	private Prescription prescription;
+
+	public PreMedicineForm() {
+	}
 
 	public int getPm_id() {
 		return pm_id;
@@ -68,21 +69,5 @@ public class PreMedicine implements Serializable {
 
 	public void setTotalNum(int totalNum) {
 		this.totalNum = totalNum;
-	}
-
-	public int getMed_id() {
-		return med_id;
-	}
-
-	public void setMed_id(int med_id) {
-		this.med_id = med_id;
-	}
-
-	public Prescription getPrescription() {
-		return prescription;
-	}
-
-	public void setPrescription(Prescription prescription) {
-		this.prescription = prescription;
 	}
 }

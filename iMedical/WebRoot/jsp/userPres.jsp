@@ -23,6 +23,7 @@
 		  			<th>规	格</th>
 		  			<th>药物总量</th>
 		  			<th>添加至备忘录</th>
+		  			<th>评价</th>
 		  		</tr>
 		  		<c:forEach items="${up.medicines }" var="pm">
 			  		<tr>
@@ -33,6 +34,7 @@
 			  			<td><c:out value="${pm.perNum }"/></td>
 			  			<td><c:out value="${pm.totalNum }"/></td>
 			  			<td><a href="${pageContext.request.contextPath }/memorandum_askAddMemo.action?pre_id=${up.pre_id }&pm_id=${pm.pm_id }">添加至备忘录</a></td>
+			  			<td><a href="${pageContext.request.contextPath }/medGrade_askGrade.action?med_id=${pm.med_id }">评分</a></td>
 			  		</tr>
 		  		</c:forEach>
 		  	</table>
