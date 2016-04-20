@@ -6,7 +6,7 @@ import java.sql.Time;
 
 @SuppressWarnings("serial")
 public class Memorandum implements Serializable {
-	private int mem_id;
+	private Integer mem_id;
 	private String content;
 	private Date beginDate;
 	private Date endDate;
@@ -14,15 +14,16 @@ public class Memorandum implements Serializable {
 	private User user;
 	private Prescription prescription;
 	private PreMedicine preMedicine;
+	private Integer flag;
 
 	public Memorandum() {
 	}
 
-	public int getMem_id() {
+	public Integer getMem_id() {
 		return mem_id;
 	}
 
-	public void setMem_id(int mem_id) {
+	public void setMem_id(Integer mem_id) {
 		this.mem_id = mem_id;
 	}
 
@@ -80,5 +81,13 @@ public class Memorandum implements Serializable {
 
 	public void setPreMedicine(PreMedicine preMedicine) {
 		this.preMedicine = preMedicine;
+	}
+
+	public Integer getFlag() {
+		return flag;
+	}
+
+	public void setFlag(Integer flag) {
+		this.flag = flag;
 	}
 }

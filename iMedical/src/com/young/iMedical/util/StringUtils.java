@@ -73,4 +73,12 @@ public class StringUtils {
 		}
 		return intArray;
 	}
+
+	public static String sqlDateToString(java.sql.Date date) {
+		return new SimpleDateFormat("yyyy-MM-dd").format(date);
+	}
+
+	public static String sqlTimeToString(java.sql.Time time) {
+		return new SimpleDateFormat("HH:mm:ss").format(time);
+	}
 }

@@ -92,6 +92,7 @@ public class MemorandumAction extends BaseAction implements
 				memorandum.setBeginDate(StringUtils.stringToSqlDate(beginDate));
 				memorandum.setEndDate(StringUtils.stringToSqlDate(endDate));
 				memorandum.setTime(StringUtils.stringToSqlTime(time));
+				memorandum.setFlag(0);
 				memorandumService.saveMemo(memorandum);
 			}
 			return memoList();
@@ -194,5 +195,9 @@ public class MemorandumAction extends BaseAction implements
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
+	}
+
+	public void android_add_memo() {
+
 	}
 }

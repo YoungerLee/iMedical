@@ -117,5 +117,20 @@
         <action name="android_doctor_logout" class="com.young.iMedical.web.action.DoctorAction" method="android_doctor_logout">
               <result type="json"></result>  <!--返回值类型设置为json,不设置返回页面-->        
         </action>
+        <action name="android_memo_list" class="com.young.iMedical.web.action.MemorandumAction" method="android_memo_list">
+              <result type="json"></result>  <!--返回值类型设置为json,不设置返回页面-->        
+        </action>
+         <action name="android_add_memo" class="com.young.iMedical.web.action.MemorandumAction" method="android_add_memo">
+              <result type="json"></result>  <!--返回值类型设置为json,不设置返回页面-->        
+        </action>
+        <action name="android_userPres_list" class="com.young.iMedical.web.action.PrescriptionAction" method="android_userPres_list">
+              <result type="json"></result>  <!--返回值类型设置为json,不设置返回页面-->        
+        </action> 
+     </package>
+     <!-- 药箱设备端的请求 -->
+     <package name="young_medkit"  namespace="/" extends="json-default">
+     	<action name="medkit_*" class="com.young.iMedical.web.action.MedKitAction" method="{1}">
+     		<result type="json" />
+     	</action>
      </package>
 </struts>

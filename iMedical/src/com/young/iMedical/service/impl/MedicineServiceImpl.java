@@ -15,6 +15,7 @@ import com.young.iMedical.dao.MedicineDao;
 import com.young.iMedical.domain.Doctor;
 import com.young.iMedical.domain.Medicine;
 import com.young.iMedical.service.MedicineService;
+import com.young.iMedical.util.StringUtils;
 import com.young.iMedical.web.vo.MedicineForm;
 
 @Transactional(readOnly = true)
@@ -100,7 +101,8 @@ public class MedicineServiceImpl implements MedicineService {
 			medicineForm.setMed_id(medicine.getMed_id());
 			medicineForm.setName(medicine.getName());
 			medicineForm.setMethod(medicine.getMethod());
-			medicineForm.setBuyTime(medicine.getBuyTime());
+			medicineForm.setBuyTime(StringUtils.sqlDateToString(medicine
+					.getBuyTime()));
 			medicineForm.setPerNum(medicine.getPerNum());
 			medicineForm.setQuantity(medicine.getQuantity());
 			medicineForm.setType(medicine.getType());

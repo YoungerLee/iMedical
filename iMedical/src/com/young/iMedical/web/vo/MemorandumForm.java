@@ -1,8 +1,6 @@
 package com.young.iMedical.web.vo;
 
 import java.io.Serializable;
-import java.sql.Date;
-import java.sql.Time;
 
 @SuppressWarnings("serial")
 public class MemorandumForm implements Serializable {
@@ -10,9 +8,9 @@ public class MemorandumForm implements Serializable {
 	private String username;
 	private String purpose;
 	private String content;
-	private Date beginDate;
-	private Date endDate;
-	private Time time;
+	private String beginDate;
+	private String endDate;
+	private String time;
 
 	public MemorandumForm() {
 	}
@@ -49,27 +47,27 @@ public class MemorandumForm implements Serializable {
 		this.content = content;
 	}
 
-	public Date getBeginDate() {
+	public String getBeginDate() {
 		return beginDate;
 	}
 
-	public void setBeginDate(Date beginDate) {
+	public void setBeginDate(String beginDate) {
 		this.beginDate = beginDate;
 	}
 
-	public Date getEndDate() {
+	public String getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(Date endDate) {
+	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
 
-	public Time getTime() {
+	public String getTime() {
 		return time;
 	}
 
-	public void setTime(Time time) {
+	public void setTime(String time) {
 		this.time = time;
 	}
 }

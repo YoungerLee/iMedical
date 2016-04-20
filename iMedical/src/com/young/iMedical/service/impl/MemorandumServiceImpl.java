@@ -15,6 +15,8 @@ import com.young.iMedical.domain.Memorandum;
 import com.young.iMedical.domain.Prescription;
 import com.young.iMedical.domain.User;
 import com.young.iMedical.service.MemorandumService;
+import com.young.iMedical.util.StringUtils;
+import com.young.iMedical.web.vo.MedKitData;
 import com.young.iMedical.web.vo.MemorandumForm;
 
 @Transactional(readOnly = true)
@@ -32,6 +34,14 @@ public class MemorandumServiceImpl implements MemorandumService {
 	@Override
 	public List<Memorandum> findMemoByUser(User user) {
 		String hqlWhere = " and o.user = ?";
+		Object[] params = { user };
+		return memorandumDao.findCollectionByConditionNoPage(hqlWhere, params,
+				null);
+	}
+
+	@Override
+	public List<Memorandum> findMemoByUserToKit(User user) {
+		String hqlWhere = " and o.user = ? and o.flag = 0";
 		Object[] params = { user };
 		return memorandumDao.findCollectionByConditionNoPage(hqlWhere, params,
 				null);
@@ -78,12 +88,38 @@ public class MemorandumServiceImpl implements MemorandumService {
 			memorandumForm
 					.setPurpose(memorandum.getPrescription().getPurpose());
 			memorandumForm.setMem_id(memorandum.getMem_id());
-			memorandumForm.setBeginDate(memorandum.getBeginDate());
-			memorandumForm.setEndDate(memorandum.getEndDate());
-			memorandumForm.setTime(memorandum.getTime());
+			memorandumForm.setBeginDate(StringUtils.sqlDateToString(memorandum
+					.getBeginDate()));
+			memorandumForm.setEndDate(StringUtils.sqlDateToString(memorandum
+					.getEndDate()));
+			memorandumForm.setTime(StringUtils.sqlTimeToString(memorandum
+					.getTime()));
 			memorandumForm.setContent(memorandum.getContent());
 			voList.add(memorandumForm);
 		}
 		return voList;
+	}
+
+	@Override
+	public List<MedKitData> PO2MedKit(List<Memorandum> list) {
+		List<MedKitData> voList = new ArrayList<MedKitData>();
+		MedKitData mkd = null;
+		for (int i = 0; list != null && i < list.size(); i++) {
+			Memorandum memorandum = list.get(i);
+			mkd = new MedKitData();
+			mkd.setMed_id(memorandum.getPreMedicine().getMed_id());
+			mkd.setBeginDate(StringUtils.sqlDateToString(memorandum
+					.getBeginDate()));
+			mkd.setEndDate(StringUtils.sqlDateToString(memorandum.getEndDate()));
+			mkd.setTime(StringUtils.sqlTimeToString(memorandum.getTime()));
+			voList.add(mkd);
+		}
+		return voList;
+	}
+
+	@Override
+	@Transactional(isolation = Isolation.DEFAULT, propagation = Propagation.REQUIRED, readOnly = false)
+	public void updateMemo(Memorandum memo) {
+		memorandumDao.update(memo);
 	}
 }

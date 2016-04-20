@@ -4,7 +4,7 @@
     "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="com.young.iMedical.domain">
 	<class name="Memorandum" table="memorandum">
-		<id name="mem_id" type="int">
+		<id name="mem_id" type="integer">
 			<column name="mem_id" sql-type="int" not-null="true"/>
 			<generator class="increment"/>
 		</id>
@@ -19,6 +19,9 @@
 		</property>
 		<property name="time" type="time">
 			<column name="time" sql-type="time"/>
+		</property>
+		<property name="flag" type="integer">
+			<column name="flag" sql-type="int"/>
 		</property>
 		<many-to-one name="user" class="com.young.iMedical.domain.User" lazy="false">
 			<column name="user_id" />

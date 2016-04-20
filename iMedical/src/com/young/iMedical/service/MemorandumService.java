@@ -5,6 +5,7 @@ import java.util.List;
 import com.young.iMedical.domain.Memorandum;
 import com.young.iMedical.domain.Prescription;
 import com.young.iMedical.domain.User;
+import com.young.iMedical.web.vo.MedKitData;
 import com.young.iMedical.web.vo.MemorandumForm;
 
 public interface MemorandumService {
@@ -24,6 +25,14 @@ public interface MemorandumService {
 	 * @return 结果的集合
 	 */
 	List<Memorandum> findMemoByUser(User user);
+
+	/**
+	 * 查找指定用户的备忘录返回药箱
+	 * 
+	 * @param user
+	 * @return 结果的集合
+	 */
+	List<Memorandum> findMemoByUserToKit(User user);
 
 	/**
 	 * 查找对应药方的备忘录
@@ -57,10 +66,25 @@ public interface MemorandumService {
 	boolean isMemoIdExist(Integer mem_id);
 
 	/**
+	 * 修改备忘录信息
+	 * 
+	 * @param memo
+	 */
+	void updateMemo(Memorandum memo);
+
+	/**
 	 * 把PO对象转化为VO对象
 	 * 
 	 * @param list
 	 * @return VO对象的集合
 	 */
 	List<MemorandumForm> POconvertVO(List<Memorandum> list);
+
+	/**
+	 * 把PO对象封装为VO对象(药箱)
+	 * 
+	 * @param list
+	 * @return VO对象的集合
+	 */
+	List<MedKitData> PO2MedKit(List<Memorandum> list);
 }

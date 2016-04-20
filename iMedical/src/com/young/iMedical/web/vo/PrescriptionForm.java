@@ -1,14 +1,13 @@
 package com.young.iMedical.web.vo;
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.util.List;
 
 @SuppressWarnings("serial")
 public class PrescriptionForm implements Serializable {
 	private String pre_id;
 	private String purpose;
-	private Date time;
+	private String time;
 	private List<PreMedicineForm> medicines;
 	private String username;
 	private String doctorName;
@@ -32,11 +31,11 @@ public class PrescriptionForm implements Serializable {
 		this.purpose = purpose;
 	}
 
-	public Date getTime() {
+	public String getTime() {
 		return time;
 	}
 
-	public void setTime(Date time) {
+	public void setTime(String time) {
 		this.time = time;
 	}
 

@@ -1,14 +1,13 @@
 package com.young.iMedical.web.vo;
 
 import java.io.Serializable;
-import java.sql.Date;
 
 @SuppressWarnings("serial")
 public class UserForm implements Serializable {
 	private int user_id;
 	private String username;
 	private int gender; // 1为男，0为女
-	private Date birthday;
+	private String birthday;
 	private int code;
 	private String msg;
 	private String sessionID;
@@ -40,11 +39,11 @@ public class UserForm implements Serializable {
 		this.gender = gender;
 	}
 
-	public Date getBirthday() {
+	public String getBirthday() {
 		return birthday;
 	}
 
-	public void setBirthday(Date birthday) {
+	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
 

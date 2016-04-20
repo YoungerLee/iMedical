@@ -1,7 +1,6 @@
 package com.young.iMedical.web.vo;
 
 import java.io.Serializable;
-import java.sql.Date;
 
 /**
  * VO对象
@@ -17,7 +16,7 @@ public class MedicineForm implements Serializable {
 	private String method;
 	private int quantity;
 	private int perNum;
-	private Date buyTime;
+	private String buyTime;
 	private String doctor;
 
 	public MedicineForm() {
@@ -72,11 +71,11 @@ public class MedicineForm implements Serializable {
 		this.perNum = perNum;
 	}
 
-	public Date getBuyTime() {
+	public String getBuyTime() {
 		return buyTime;
 	}
 
-	public void setBuyTime(Date buyTime) {
+	public void setBuyTime(String buyTime) {
 		this.buyTime = buyTime;
 	}
 

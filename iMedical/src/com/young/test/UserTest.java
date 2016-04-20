@@ -15,7 +15,7 @@ import com.young.iMedical.service.MemorandumService;
 import com.young.iMedical.service.PreMedicineService;
 import com.young.iMedical.service.PrescriptionService;
 import com.young.iMedical.service.UserService;
-import com.young.iMedical.web.vo.MemorandumForm;
+import com.young.iMedical.web.vo.MedKitData;
 
 public class UserTest {
 	private UserService userService = (UserService) ServiceProvider
@@ -114,8 +114,9 @@ public class UserTest {
 	// @Test
 	// public void testTime() {
 	// String time = "12:12:12";
-	// System.out.println(time);
-	// System.out.println(StringUtils.stringToSqlTime(time));
+	// java.sql.Time sqlTime = StringUtils.stringToSqlTime(time);
+	// System.out.println(sqlTime);
+	// System.out.println(StringUtils.sqlTimeToString(sqlTime));
 	// }
 	// @Test
 	// public void testString() {
@@ -128,15 +129,15 @@ public class UserTest {
 	// System.out.println(intArr[i] + "\t");
 	// }
 	// }
-	@Test
-	public void android_memo_list() {
-		User user = userService.findUserByName("陈仁煌");
-		List<Memorandum> memoList = memorandumService.findMemoByUser(user);
-		List<MemorandumForm> voList = memorandumService.POconvertVO(memoList);
-		Gson gson = new Gson();
-		String str = gson.toJson(voList);
-		System.out.println(str);
-	}
+	// @Test
+	// public void android_memo_list() {
+	// User user = userService.findUserByName("陈仁煌");
+	// List<Memorandum> memoList = memorandumService.findMemoByUser(user);
+	// List<MemorandumForm> voList = memorandumService.POconvertVO(memoList);
+	// Gson gson = new Gson();
+	// String str = gson.toJson(voList);
+	// System.out.println(str);
+	// }
 	// @Test
 	// public void android_userPres_list() {
 	// User user = userService.findUserByName("陈仁煌");
@@ -163,4 +164,13 @@ public class UserTest {
 	// }
 	// return voList;
 	// }
+	@Test
+	public void medkit() {
+		User user = userService.findUserByName("陈仁煌");
+		List<Memorandum> memoList = memorandumService.findMemoByUser(user);
+		List<MedKitData> voList = memorandumService.PO2MedKit(memoList);
+		Gson gson = new Gson();
+		String str = gson.toJson(voList);
+		System.out.println(str);
+	}
 }

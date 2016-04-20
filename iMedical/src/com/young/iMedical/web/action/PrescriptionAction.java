@@ -157,7 +157,7 @@ public class PrescriptionAction extends BaseAction implements
 			pf.setPre_id(prescription.getPre_id());
 			pf.setPurpose(prescription.getPurpose());
 			pf.setDoctorName(prescription.getDoctor().getName());
-			pf.setTime(prescription.getTime());
+			pf.setTime(StringUtils.sqlDateToString(prescription.getTime()));
 			pf.setMedicines(pms.POconvertVO(prescription.getMedicines()));
 			voList.add(pf);
 		}
