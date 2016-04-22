@@ -2,8 +2,6 @@ package com.young.iMedical.web.action;
 
 import java.io.PrintWriter;
 
-import org.apache.commons.beanutils.BeanUtils;
-
 import com.google.gson.Gson;
 import com.opensymphony.xwork2.ModelDriven;
 import com.young.iMedical.container.ServiceProvider;
@@ -11,6 +9,7 @@ import com.young.iMedical.domain.User;
 import com.young.iMedical.service.LogService;
 import com.young.iMedical.service.UserService;
 import com.young.iMedical.util.MD5Utils;
+import com.young.iMedical.util.StringUtils;
 import com.young.iMedical.web.vo.UserForm;
 
 @SuppressWarnings("serial")
@@ -85,7 +84,11 @@ public class UserAction extends BaseAction implements ModelDriven<User> {
 					userForm.setMsg("密码错误");
 				} else {
 					request.getSession().setAttribute("user", user);
-					BeanUtils.copyProperties(userForm, user);
+					userForm.setUsername(user.getUsername());
+					userForm.setUser_id(user.getUser_id());
+					userForm.setGender(user.getGender());
+					userForm.setBirthday(StringUtils.sqlDateToString(user
+							.getBirthday()));
 					userForm.setSessionID(request.getSession().getId());
 					userForm.setCode(100);
 					userForm.setMsg("登录成功");

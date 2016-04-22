@@ -4,16 +4,16 @@ import java.io.Serializable;
 
 @SuppressWarnings("serial")
 public class MedKitData implements Serializable {
-	private Integer med_id; // 药品id
+	private String med_id; // 药品id
 	private String beginDate; // 开始日期
 	private String endDate; // 结束日期
 	private String time; // 提醒时间
 
-	public Integer getMed_id() {
+	public String getMed_id() {
 		return med_id;
 	}
 
-	public void setMed_id(Integer med_id) {
+	public void setMed_id(String med_id) {
 		this.med_id = med_id;
 	}
 
