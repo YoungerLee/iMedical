@@ -107,7 +107,8 @@ public class MemorandumServiceImpl implements MemorandumService {
 		for (int i = 0; list != null && i < list.size(); i++) {
 			Memorandum memorandum = list.get(i);
 			mkd = new MedKitData();
-			mkd.setMed_id(memorandum.getPreMedicine().getMed_id());
+			mkd.setMed_id(String.valueOf(memorandum.getPreMedicine()
+					.getMed_id()));
 			mkd.setBeginDate(StringUtils.sqlDateToString(memorandum
 					.getBeginDate()));
 			mkd.setEndDate(StringUtils.sqlDateToString(memorandum.getEndDate()));
