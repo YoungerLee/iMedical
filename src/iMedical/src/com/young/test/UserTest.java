@@ -1,13 +1,9 @@
 package com.young.test;
 
-import java.util.List;
-
 import org.junit.Test;
 
-import com.google.gson.Gson;
 import com.young.iMedical.container.ServiceProvider;
-import com.young.iMedical.domain.Memorandum;
-import com.young.iMedical.domain.User;
+import com.young.iMedical.domain.Doctor;
 import com.young.iMedical.service.DoctorService;
 import com.young.iMedical.service.LogService;
 import com.young.iMedical.service.MedicineService;
@@ -15,7 +11,7 @@ import com.young.iMedical.service.MemorandumService;
 import com.young.iMedical.service.PreMedicineService;
 import com.young.iMedical.service.PrescriptionService;
 import com.young.iMedical.service.UserService;
-import com.young.iMedical.web.vo.MedKitData;
+import com.young.iMedical.util.MD5Utils;
 
 public class UserTest {
 	private UserService userService = (UserService) ServiceProvider
@@ -44,7 +40,12 @@ public class UserTest {
 	// "1995-05-20").getTime()));
 	// userService.saveUser(user);
 	// }
-
+	@Test
+	public void alter() {
+		Doctor doctor = doctorService.findDoctorByName("李医生");
+		doctor.setPassword(MD5Utils.md5("123"));
+		doctorService.updateDoctor(doctor);
+	}
 	// @Test
 	// public void addDoctor() {
 	// Doctor doctor = new Doctor();
@@ -164,13 +165,13 @@ public class UserTest {
 	// }
 	// return voList;
 	// }
-	@Test
-	public void medkit() {
-		User user = userService.findUserByName("陈仁煌");
-		List<Memorandum> memoList = memorandumService.findMemoByUser(user);
-		List<MedKitData> voList = memorandumService.PO2MedKit(memoList);
-		Gson gson = new Gson();
-		String str = gson.toJson(voList);
-		System.out.println(str);
-	}
+	// @Test
+	// public void medkit() {
+	// User user = userService.findUserByName("陈仁煌");
+	// List<Memorandum> memoList = memorandumService.findMemoByUser(user);
+	// List<MedKitData> voList = memorandumService.PO2MedKit(memoList);
+	// Gson gson = new Gson();
+	// String str = gson.toJson(voList);
+	// System.out.println(str);
+	// }
 }

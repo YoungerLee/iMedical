@@ -1,0 +1,6 @@
+/iMedical/jsp/docHome.jsp
+/iMedical/jsp/addMed.jsp
+/iMedical/medicine_addMed.action
+/iMedical/medicine_medList.action
+/iMedical/jsp/addPres.jsp
+/iMedical/prescription_presListOfDoctor.action

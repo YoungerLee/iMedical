@@ -73,31 +73,38 @@ public class UserAction extends BaseAction implements ModelDriven<User> {
 			String md5Psw = MD5Utils.md5(password);
 			UserForm userForm = new UserForm();
 			// 使用登录名查询数据库，获取用户的详细信息
-			User user = userService.findUserByName(username);
-			if (user == null) {
-				userForm.setCode(101);
-				userForm.setMsg("用户名不存在");
-			} else {
-				if (password == null || password.equals("")
-						|| !user.getPassword().equals(md5Psw)) {
-					userForm.setCode(102);
-					userForm.setMsg("密码错误");
+			if (username != null && !"".equals(username) && password != null
+					&& !"".equals(password)) {
+				User user = userService.findUserByName(username);
+				if (user == null) {
+					userForm.setCode(101);
+					userForm.setMsg("用户名不存在");
 				} else {
-					request.getSession().setAttribute("user", user);
-					userForm.setUsername(user.getUsername());
-					userForm.setUser_id(user.getUser_id());
-					userForm.setGender(user.getGender());
-					userForm.setBirthday(StringUtils.sqlDateToString(user
-							.getBirthday()));
-					userForm.setSessionID(request.getSession().getId());
-					userForm.setCode(100);
-					userForm.setMsg("登录成功");
-					logService.saveUserLog(request,
-							"登录模块：当前用户【" + user.getUsername() + "】登录系统");
-					Gson gson = new Gson();
-					String jsonStr = gson.toJson(userForm);
-					out.write(jsonStr);
+					if (password == null || password.equals("")
+							|| !user.getPassword().equals(md5Psw)) {
+						userForm.setCode(102);
+						userForm.setMsg("密码错误");
+					} else {
+						request.getSession().setAttribute("user", user);
+						userForm.setUsername(user.getUsername());
+						userForm.setUser_id(user.getUser_id());
+						userForm.setGender(user.getGender());
+						userForm.setBirthday(StringUtils.sqlDateToString(user
+								.getBirthday()));
+						userForm.setSessionID(request.getSession().getId());
+						userForm.setCode(100);
+						userForm.setMsg("登录成功");
+						logService.saveUserLog(request,
+								"登录模块：当前用户【" + user.getUsername() + "】登录系统");
+						Gson gson = new Gson();
+						String jsonStr = gson.toJson(userForm);
+						out.write(jsonStr);
+					}
+					out.flush();
+					out.close();
 				}
+			} else {
+				out.write("Please submit legal parameters!");
 				out.flush();
 				out.close();
 			}

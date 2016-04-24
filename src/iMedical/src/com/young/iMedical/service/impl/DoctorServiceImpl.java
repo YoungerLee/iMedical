@@ -42,4 +42,10 @@ public class DoctorServiceImpl implements DoctorService {
 		}
 		return Doctor;
 	}
+
+	@Override
+	@Transactional(isolation = Isolation.DEFAULT, propagation = Propagation.REQUIRED, readOnly = false)
+	public void updateDoctor(Doctor doctor) {
+		doctorDao.update(doctor);
+	}
 }

@@ -10,4 +10,6 @@ public interface DoctorService {
 	Doctor findDoctorById(String id);
 
 	Doctor findDoctorByName(String name);
+
+	void updateDoctor(Doctor doctor);
 }

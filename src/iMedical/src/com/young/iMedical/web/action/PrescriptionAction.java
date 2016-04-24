@@ -126,15 +126,21 @@ public class PrescriptionAction extends BaseAction implements
 		try {
 			PrintWriter out = response.getWriter();
 			String username = request.getParameter("username");
-			User user = userService.findUserByName(username);
-			List<Prescription> presList = prescriptionService
-					.findPresByUser(user);
-			List<PrescriptionForm> voList = POconvertVO(presList);
-			Gson gson = new Gson();
-			String str = gson.toJson(voList);
-			out.write(str);
-			out.flush();
-			out.close();
+			if (username != null && "".equals(username)) {
+				User user = userService.findUserByName(username);
+				List<Prescription> presList = prescriptionService
+						.findPresByUser(user);
+				List<PrescriptionForm> voList = POconvertVO(presList);
+				Gson gson = new Gson();
+				String str = gson.toJson(voList);
+				out.write(str);
+				out.flush();
+				out.close();
+			} else {
+				out.write("Please submit legal parameters!");
+				out.flush();
+				out.close();
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);

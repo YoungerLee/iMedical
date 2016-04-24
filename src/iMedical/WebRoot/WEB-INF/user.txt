@@ -1,0 +1,5 @@
+/iMedical/jsp/userHome.jsp
+/iMedical/prescription_presListOfUser.action
+/iMedical/memorandum_askAddMemo.action
+/iMedical/medGrade_askGrade.action
+/iMedical/memorandum_memoList.action
