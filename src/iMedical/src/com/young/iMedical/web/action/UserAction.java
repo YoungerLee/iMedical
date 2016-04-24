@@ -79,11 +79,17 @@ public class UserAction extends BaseAction implements ModelDriven<User> {
 				if (user == null) {
 					userForm.setCode(101);
 					userForm.setMsg("用户名不存在");
+					Gson gson = new Gson();
+					String jsonStr = gson.toJson(userForm);
+					out.write(jsonStr);
 				} else {
 					if (password == null || password.equals("")
 							|| !user.getPassword().equals(md5Psw)) {
 						userForm.setCode(102);
 						userForm.setMsg("密码错误");
+						Gson gson = new Gson();
+						String jsonStr = gson.toJson(userForm);
+						out.write(jsonStr);
 					} else {
 						request.getSession().setAttribute("user", user);
 						userForm.setUsername(user.getUsername());
