@@ -26,7 +26,7 @@ public class AndroidUserAction extends BaseAction implements ModelDriven<User> {
 		return iMedUser;
 	}
 
-	public void android_user_login() {
+	public void login() {
 		try {
 			PrintWriter out = response.getWriter();
 			String username = iMedUser.getUsername();
@@ -82,7 +82,7 @@ public class AndroidUserAction extends BaseAction implements ModelDriven<User> {
 		}
 	}
 
-	public void android_user_logout() {
+	public void logout() {
 		try {
 			PrintWriter out = response.getWriter();
 			// 清空session

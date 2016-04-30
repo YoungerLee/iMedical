@@ -34,7 +34,7 @@ public class AndroidPresAction extends BaseAction implements
 
 	// --------------------以下是Android端的请求--------------------------//
 
-	public void android_userPres_list() {
+	public void list() {
 		try {
 			PrintWriter out = response.getWriter();
 			String username = request.getParameter("username");

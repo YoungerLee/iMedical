@@ -1,12 +1,13 @@
 package com.young.iMedical.service;
 
+import java.sql.Time;
 import java.util.List;
 
 import com.young.iMedical.domain.Memorandum;
+import com.young.iMedical.domain.PreMedicine;
 import com.young.iMedical.domain.Prescription;
 import com.young.iMedical.domain.User;
 import com.young.iMedical.web.vo.MedKitData;
-import com.young.iMedical.web.vo.MemorandumForm;
 
 public interface MemorandumService {
 	public final static String SERVICE_NAME = "com.young.iMedical.service.impl.MemorandumServiceImpl";
@@ -43,6 +44,17 @@ public interface MemorandumService {
 	List<Memorandum> findMemoByPres(Prescription pres);
 
 	/**
+	 * 查找药方中某个药品的所有备忘录
+	 * 
+	 * @param pres
+	 * @param pm
+	 * @return 结果的集合
+	 */
+	List<Memorandum> findMemoByPresAndMed(Prescription pres, PreMedicine pm);
+
+	List<Time> findTimeByPresAndMed(String pre_id, Integer pm_id);
+
+	/**
 	 * 根据id查找备忘录
 	 * 
 	 * @param mem_id
@@ -71,14 +83,6 @@ public interface MemorandumService {
 	 * @param memo
 	 */
 	void updateMemo(Memorandum memo);
-
-	/**
-	 * 把PO对象封装为VO对象(Android)
-	 * 
-	 * @param list
-	 * @return VO对象的集合
-	 */
-	List<MemorandumForm> POconvertVO(List<Memorandum> list);
 
 	/**
 	 * 把PO对象封装为VO对象(药箱)

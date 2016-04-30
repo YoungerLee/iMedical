@@ -105,25 +105,19 @@
 	<!-- 以下是处理Android端的action -->
      <!-- 处理Android端的action -->  
     <package name="young_android"  namespace="/" extends="json-default"> 
-	    <action name="android_user_login" class="com.young.iMedical.web.android.AndroidUserAction" method="android_user_login">
+	    <action name="android_user_*" class="com.young.iMedical.web.android.AndroidUserAction" method="{1}">
               <result type="json" />  <!--返回值类型设置为json,不设置返回页面-->        
         </action>
-        <action name="android_user_logout" class="com.young.iMedical.web.android.AndroidUserAction" method="android_user_logout">
-              <result type="json"></result>  <!--返回值类型设置为json,不设置返回页面-->        
-        </action>
-          <action name="android_doctor_login" class="com.young.iMedical.web.action.DoctorAction" method="android_doctor_login">
+        <action name="android_doctor_login" class="com.young.iMedical.web.action.DoctorAction" method="android_doctor_login">
               <result type="json"></result>  <!--返回值类型设置为json,不设置返回页面-->        
         </action>
         <action name="android_doctor_logout" class="com.young.iMedical.web.action.DoctorAction" method="android_doctor_logout">
               <result type="json"></result>  <!--返回值类型设置为json,不设置返回页面-->        
         </action>
-        <action name="android_memo_list" class="com.young.iMedical.web.android.AndroidMemoAction" method="android_memo_list">
+        <action name="android_memo_*" class="com.young.iMedical.web.android.AndroidMemoAction" method="{1}">
               <result type="json"></result>  <!--返回值类型设置为json,不设置返回页面-->        
         </action>
-         <action name="android_add_memo" class="com.young.iMedical.web.android.AndroidMemoAction" method="android_add_memo">
-              <result type="json"></result>  <!--返回值类型设置为json,不设置返回页面-->        
-        </action>
-        <action name="android_userPres_list" class="com.young.iMedical.web.android.AndroidPresAction" method="android_userPres_list">
+        <action name="android_userPres_*" class="com.young.iMedical.web.android.AndroidPresAction" method="{1}">
               <result type="json"></result>  <!--返回值类型设置为json,不设置返回页面-->        
         </action> 
      </package>

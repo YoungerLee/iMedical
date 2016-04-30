@@ -1,9 +1,6 @@
 package com.young.test;
 
-import org.junit.Test;
-
 import com.young.iMedical.container.ServiceProvider;
-import com.young.iMedical.domain.Doctor;
 import com.young.iMedical.service.DoctorService;
 import com.young.iMedical.service.LogService;
 import com.young.iMedical.service.MedicineService;
@@ -11,7 +8,6 @@ import com.young.iMedical.service.MemorandumService;
 import com.young.iMedical.service.PreMedicineService;
 import com.young.iMedical.service.PrescriptionService;
 import com.young.iMedical.service.UserService;
-import com.young.iMedical.util.MD5Utils;
 
 public class UserTest {
 	private UserService userService = (UserService) ServiceProvider
@@ -40,12 +36,13 @@ public class UserTest {
 	// "1995-05-20").getTime()));
 	// userService.saveUser(user);
 	// }
-	@Test
-	public void alter() {
-		Doctor doctor = doctorService.findDoctorByName("李医生");
-		doctor.setPassword(MD5Utils.md5("123"));
-		doctorService.updateDoctor(doctor);
-	}
+	// @Test
+	// public void alter() {
+	// Doctor doctor = doctorService.findDoctorByName("李医生");
+	// doctor.setPassword(MD5Utils.md5("123"));
+	// doctorService.updateDoctor(doctor);
+	// }
+
 	// @Test
 	// public void addDoctor() {
 	// Doctor doctor = new Doctor();
@@ -170,6 +167,38 @@ public class UserTest {
 	// User user = userService.findUserByName("陈仁煌");
 	// List<Memorandum> memoList = memorandumService.findMemoByUser(user);
 	// List<MedKitData> voList = memorandumService.PO2MedKit(memoList);
+	// Gson gson = new Gson();
+	// String str = gson.toJson(voList);
+	// System.out.println(str);
+	// }
+	// @Test
+	// public void androidQuery() {
+	// Prescription pres = prescriptionService.findPresById(
+	// "402881ed546095d7015460969eb30001").get(0);
+	// System.out.println(pres.getPurpose());
+	// PreMedicine pm = pms.findPreMedById(6);
+	// System.out.println(pm.getName());
+	// List<Memorandum> list = memorandumService
+	// .findMemoByPresAndMed(pres, pm);
+	// for (int i = 0; list != null && i < list.size(); i++) {
+	// Memorandum memorandum = list.get(i);
+	// System.out.println(i + ":" + memorandum.getTime().toString());
+	// }
+	// }
+	// @Test
+	// public void testDao() {
+	// List<Time> list = memorandumService.findTimeByPresAndMed(
+	// "402881ed546095d7015460969eb30001", 6);
+	// for (int i = 0; list != null && i < list.size(); i++) {
+	// Time time = list.get(i);
+	// System.out.println(i + ":" + time.toString());
+	// }
+	// }
+	// @Test
+	// public void testMemo() {
+	// User user = userService.findUserByName("young");
+	// List<Memorandum> memoList = memorandumService.findMemoByUser(user);
+	// List<MemorandumForm> voList = POconvertVO(memoList);
 	// Gson gson = new Gson();
 	// String str = gson.toJson(voList);
 	// System.out.println(str);
