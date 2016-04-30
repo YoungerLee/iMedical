@@ -1,11 +1,9 @@
 package com.young.iMedical.web.action;
 
-import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.google.gson.Gson;
 import com.opensymphony.xwork2.ModelDriven;
 import com.young.iMedical.container.ServiceProvider;
 import com.young.iMedical.domain.Memorandum;
@@ -17,7 +15,6 @@ import com.young.iMedical.service.PreMedicineService;
 import com.young.iMedical.service.PrescriptionService;
 import com.young.iMedical.service.UserService;
 import com.young.iMedical.util.StringUtils;
-import com.young.iMedical.web.vo.MemorandumForm;
 
 public class MemorandumAction extends BaseAction implements
 		ModelDriven<Memorandum> {
@@ -175,36 +172,5 @@ public class MemorandumAction extends BaseAction implements
 				.deleteMemoByIds(StringUtils.stringArrayToIntegerArray(request
 						.getParameterValues("delId")));
 		return memoList();
-	}
-
-	/************************** Android端的action *************************/
-	public void android_memo_list() {
-		try {
-			PrintWriter out = response.getWriter();
-			String username = request.getParameter("username");
-			if (username != null && "".equals(username)) {
-				User user = userService.findUserByName(username);
-				List<Memorandum> memoList = memorandumService
-						.findMemoByUser(user);
-				List<MemorandumForm> voList = memorandumService
-						.POconvertVO(memoList);
-				Gson gson = new Gson();
-				String str = gson.toJson(voList);
-				out.write(str);
-				out.flush();
-				out.close();
-			} else {
-				out.write("Please submit legal parameters!");
-				out.flush();
-				out.close();
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new RuntimeException(e);
-		}
-	}
-
-	public void android_add_memo() {
-
 	}
 }

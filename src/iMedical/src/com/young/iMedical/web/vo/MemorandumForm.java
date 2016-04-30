@@ -7,7 +7,8 @@ public class MemorandumForm implements Serializable {
 	private int mem_id;
 	private String username;
 	private String purpose;
-	private String content;
+	private String item;
+	private String method;
 	private String beginDate;
 	private String endDate;
 	private String time;
@@ -39,12 +40,20 @@ public class MemorandumForm implements Serializable {
 		this.purpose = purpose;
 	}
 
-	public String getContent() {
-		return content;
+	public String getItem() {
+		return item;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setItem(String item) {
+		this.item = item;
+	}
+
+	public String getMethod() {
+		return method;
+	}
+
+	public void setMethod(String method) {
+		this.method = method;
 	}
 
 	public String getBeginDate() {

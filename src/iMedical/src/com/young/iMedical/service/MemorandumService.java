@@ -73,7 +73,7 @@ public interface MemorandumService {
 	void updateMemo(Memorandum memo);
 
 	/**
-	 * 把PO对象转化为VO对象
+	 * 把PO对象封装为VO对象(Android)
 	 * 
 	 * @param list
 	 * @return VO对象的集合

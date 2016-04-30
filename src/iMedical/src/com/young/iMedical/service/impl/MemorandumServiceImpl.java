@@ -94,7 +94,8 @@ public class MemorandumServiceImpl implements MemorandumService {
 					.getEndDate()));
 			memorandumForm.setTime(StringUtils.sqlTimeToString(memorandum
 					.getTime()));
-			memorandumForm.setContent(memorandum.getContent());
+			memorandumForm.setItem(memorandum.getPreMedicine().getName());
+			memorandumForm.setMethod(memorandum.getPreMedicine().getMethod());
 			voList.add(memorandumForm);
 		}
 		return voList;

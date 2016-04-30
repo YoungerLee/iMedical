@@ -8,6 +8,8 @@ import java.util.Set;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.young.iMedical.dao.PreMedicineDao;
@@ -44,5 +46,15 @@ public class PreMedicineServiceImpl implements PreMedicineService {
 			voList.add(pmf);
 		}
 		return voList;
+	}
+
+	@Override
+	@Transactional(isolation = Isolation.DEFAULT, propagation = Propagation.REQUIRED, readOnly = false)
+	public void updateMeds(Set<PreMedicine> set) {
+		Iterator<PreMedicine> it = set.iterator();
+		while (it.hasNext()) {
+			PreMedicine pm = (PreMedicine) it.next();
+			preMedicineDao.update(pm);
+		}
 	}
 }

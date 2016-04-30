@@ -23,4 +23,11 @@ public interface PreMedicineService {
 	 * @return List<PreMedicineForm>
 	 */
 	List<PreMedicineForm> POconvertVO(Set<PreMedicine> set);
+
+	/**
+	 * 更新多条药品数据
+	 * 
+	 * @param set
+	 */
+	void updateMeds(Set<PreMedicine> set);
 }
