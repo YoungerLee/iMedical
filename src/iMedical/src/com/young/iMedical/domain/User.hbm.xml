@@ -4,7 +4,7 @@
     "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="com.young.iMedical.domain">
 	<class name="User" table="users">
-		<id name="user_id" type="int">
+		<id name="user_id" type="integer">
 			<column name="user_id" sql-type="int" not-null="true"/>
 			<generator class="increment"/>
 		</id>

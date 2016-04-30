@@ -29,8 +29,8 @@ public class UserTest {
 	// @Test
 	// public void addUser() {
 	// User user = new User();
-	// user.setUsername("赵奕祺 ");
-	// user.setPassword(MD5Utils.md5("123"));
+	// user.setUsername("young");
+	// user.setPassword(MD5Utils.md5("young"));
 	// user.setGender(1);
 	// user.setBirthday(new java.sql.Date(StringUtils.stringConvertDate(
 	// "1995-05-20").getTime()));

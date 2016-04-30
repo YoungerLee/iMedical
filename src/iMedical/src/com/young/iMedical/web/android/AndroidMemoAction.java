@@ -51,7 +51,7 @@ public class AndroidMemoAction extends BaseAction implements
 			PrintWriter out = response.getWriter();
 			String user_id = request.getParameter("user_id");
 			if (user_id != null && !"".equals(user_id)) {
-				User user = userService.findUserById(user_id);
+				User user = userService.findUserById(Integer.parseInt(user_id));
 				List<Memorandum> memoList = memorandumService
 						.findMemoByUser(user);
 				List<MemorandumForm> voList = POconvertVO(memoList);

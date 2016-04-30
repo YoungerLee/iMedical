@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 @SuppressWarnings("serial")
 public class UserForm implements Serializable {
-	private int user_id;
+	private Integer user_id;
 	private String username;
 	private int gender; // 1为男，0为女
 	private String birthday;
@@ -15,11 +15,11 @@ public class UserForm implements Serializable {
 	public UserForm() {
 	}
 
-	public int getUser_id() {
+	public Integer getUser_id() {
 		return user_id;
 	}
 
-	public void setUser_id(int user_id) {
+	public void setUser_id(Integer user_id) {
 		this.user_id = user_id;
 	}
 
